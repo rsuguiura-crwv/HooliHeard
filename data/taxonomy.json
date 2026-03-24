@@ -1,0 +1,98 @@
+{
+  "product_areas": {
+    "Infra": {
+      "subcategories": ["Compute", "Storage", "Networking"],
+      "default_subcategory": "Compute",
+      "description": "Core GPU cloud infrastructure: SKUs, regions, data residency, networking, capacity/reservations"
+    },
+    "CKS": {
+      "subcategories": ["BMaaS", "CKS", "Consumption Models"],
+      "default_subcategory": "CKS",
+      "description": "CoreWeave Kubernetes Service: managed K8s control plane and cluster behavior"
+    },
+    "Platform": {
+      "subcategories": ["Security & Compliance", "Console / API / Terraform", "Observability"],
+      "default_subcategory": "Console / API / Terraform",
+      "description": "Application platform layer: multi-tenant, IAM, automation, tooling"
+    },
+    "AI Services": {
+      "subcategories": ["SUNK / Training", "Inference", "RL / Evals"],
+      "default_subcategory": "Inference",
+      "description": "Higher-level AI/ML services and patterns"
+    },
+    "W&B": {
+      "subcategories": ["n/a"],
+      "default_subcategory": "n/a",
+      "description": "Weights & Biases product or W&B-managed services"
+    }
+  },
+  "tiebreak_priority": ["Infra", "CKS", "Platform", "AI Services", "W&B"],
+  "tiebreak_rules": [
+    "Pick the area reflecting the primary pain/blocker",
+    "If still unclear, pick the area that owns the fix in today's org",
+    "Last resort: use tiebreak_priority ordering (Infra > CKS > Platform > AI Services > W&B)"
+  ],
+  "inference_routing": {
+    "self_managed_on_cks": "CKS (and AI Services > Inference if unit is service)",
+    "managed_dedicated_inference": "AI Services > Inference",
+    "serverless_endpoints": "AI Services > Inference (or W&B)",
+    "capacity_needs": "Infra > Compute",
+    "platform_needs": "Platform"
+  },
+  "insight_categories": [
+    {
+      "name": "Capacity",
+      "description": "Needs more/different capacity; timing/scale concerns"
+    },
+    {
+      "name": "Capacity Issues",
+      "description": "Hard capacity mismatch/blocker"
+    },
+    {
+      "name": "Pricing / Terms",
+      "description": "Rates, contract structure, commercial options"
+    },
+    {
+      "name": "Customer Requirements (Enhancement)",
+      "description": "New/improved capabilities beyond current product"
+    },
+    {
+      "name": "Customer Requirements (Blocker)",
+      "description": "Missing capability is go/no-go condition"
+    },
+    {
+      "name": "Issues",
+      "description": "Bugs, incidents, broken behavior in existing product"
+    },
+    {
+      "name": "Education Gaps",
+      "description": "Knowledge/documentation/positioning problem"
+    },
+    {
+      "name": "Null",
+      "description": "Relationship/strategy context only, no concrete product requirement"
+    },
+    {
+      "name": "Product Fit / Scope",
+      "description": "Are we the right solution at all?"
+    },
+    {
+      "name": "Competition / Alternatives",
+      "description": "Direct comparison vs other providers"
+    },
+    {
+      "name": "GTM / Partnership",
+      "description": "Go-to-market or alliance structure"
+    },
+    {
+      "name": "Success Pattern / Win Signal",
+      "description": "Repeatable success pattern or positive validation"
+    },
+    {
+      "name": "Process / Operational Friction",
+      "description": "Internal process/ops blocker (Ops/Finance/Legal/Fulfillment fix)"
+    }
+  ],
+  "input_data_sources": ["VoF", "CX", "Loss", "Survey", "Support"],
+  "source_tools": ["Gong", "Salesforce", "Jira", "Slack", "Qualtrics"]
+}
