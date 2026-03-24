@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Data (large files)
+data/raw/
+*.csv
+*.parquet
+!data/sample/
+
+# Claude Code local
+CLAUDE.local.md
+
+# Logs
+*.log
+logs/
+
+# Nested clone artifact
+hooli-heard/
