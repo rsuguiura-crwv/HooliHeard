@@ -41,14 +41,10 @@ echo "Step 6/6: Getting public URL..."
 echo "=== Deployment complete! ==="
 echo ""
 
-HOSTNAME=$(kubectl -n hooli-heard get svc frontend -o jsonpath='{.metadata.annotations.service\.beta\.kubernetes\.io/external-hostname}' 2>/dev/null)
 EXTERNAL_IP=$(kubectl -n hooli-heard get svc frontend -o jsonpath='{.status.loadBalancer.ingress[0].ip}' 2>/dev/null)
 
-if [ -n "$HOSTNAME" ]; then
-  echo "Public hostname annotation: $HOSTNAME"
-fi
 if [ -n "$EXTERNAL_IP" ]; then
-  echo "External IP: $EXTERNAL_IP"
+  echo "Public IP: http://$EXTERNAL_IP"
 fi
 
 echo ""

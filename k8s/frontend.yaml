@@ -32,7 +32,8 @@ metadata:
   name: frontend
   namespace: hooli-heard
   annotations:
-    # CoreWeave CKS External Hostname Controller — gives you a public URL
+    # CoreWeave CKS — public LB + DNS hostname
+    service.beta.kubernetes.io/coreweave-load-balancer-type: public
     service.beta.kubernetes.io/external-hostname: hooli-heard
 spec:
   type: LoadBalancer
