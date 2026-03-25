@@ -15,10 +15,12 @@ from app.config import settings  # noqa: E402
 from app.db import engine, SessionLocal, create_all  # noqa: E402
 from app.models.insight import Insight  # noqa: E402
 
-# Check multiple paths: repo root (local dev) and /data (Docker mount)
+# Check multiple paths: repo root (local dev), /data (docker-compose mount), cwd (k8s seed image)
 INSIGHTS_JSON = ROOT / "data" / "output" / "insights.json"
 if not INSIGHTS_JSON.exists():
     INSIGHTS_JSON = Path("/data/output/insights.json")
+if not INSIGHTS_JSON.exists():
+    INSIGHTS_JSON = Path("insights.json")
 
 # ---------------------------------------------------------------------------
 # Sample data generator
